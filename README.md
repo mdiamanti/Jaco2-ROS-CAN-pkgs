@@ -46,7 +46,7 @@ The `can_comm` node receives through the socketcan device the desired joint angu
 
 An overview of the above described process is given by the following ROS graph, generated with the use of the ROS tool rqt_graph.
 
-![can_rosgraph](![can_rosgraph](https://user-images.githubusercontent.com/39567867/43530243-bfb9b44c-95b5-11e8-88d9-71f7507c367b.png)
+![can_rosgraph](https://user-images.githubusercontent.com/39567867/43530243-bfb9b44c-95b5-11e8-88d9-71f7507c367b.png)
 
 The form of the joint angular position message that is received from `can_comm` node constitutes a string with the angular position of each joint in rads (variable of type double). Each angular position is separated from the others by spaces. Some examples are as follows:
 ```
