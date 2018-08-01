@@ -13,7 +13,7 @@ Current repository includes the appropriate ROS packages that allow remote commu
 - Regarding the hardware that extends the capabilities of a pc to support CANbus, [PCAN-USB](https://www.peak-system.com/PCAN-USB.199.0.html?&L=1) from Peak System was used along with the socketcan drivers. In order to be able to use the hardware, you should first follow step by step the installation and hardware configuration instructions given by the provider.
    1. Installation of [Linux Device Drivers](https://www.peak-system.com/fileadmin/media/linux/index.htm).
    2. Hardware Configuration as reported in the [User Manual](https://www.peak-system.com/produktcd/Pdf/English/PCAN-USB_UserMan_eng.pdf).
-   These packagesmay work with other hardware as well, but they have only been tested for the one recommended.
+   These packages may work with other hardware as well, but they have only been tested for the one recommended.
 
 ## Installation
 The installation as follows was tested on Ubuntu 14.04 and ROS indigo.
@@ -28,7 +28,7 @@ cd cd ~/catkin_ws/src
 git clone https://github.com/ros-industrial/ros_canopen.git
 ```
 
-#### Step 3. Install Jaco2-ROS-TCPIP-pkgs
+#### Step 3. Install Jaco2-ROS-CAN-pkgs
 Add the git repository in your catkin workspace:
 ```
 cd ~/catkin_ws/src
@@ -42,7 +42,7 @@ catkin_make
 ## How to use this repository
 The `can_comm` and `gazebo_plugin` packages were developed in order to be used in combination and to control remotely the movement of the robotic arm. Otherwise, each package can be used separately after some small modifications to meet a different purpose. 
 
-The `can_comm` node receives through the socketcan device the desired joint angular position of the arm, which is then sent to `gazebo_plugin` node that is responsible for executing the corresponding trajectory. 
+The `can_comm` node receives through the socketcan device the desired joint angular position of the arm, which is then sent to `gazebo_plugin` node that is responsible for executing the corresponding trajectory. The significant thing about this process is that an extra node is needed to expose CAN frames from socketcan to a ROS topic. For this reason, `socketcan_bridge` package from [ros_canopen](https://github.com/ros-industrial/ros_canopen) is also used. More information about its role is given in the official ROS page [here](http://wiki.ros.org/socketcan_bridge?distro=melodic).
 
 An overview of the above described process is given by the following ROS graph, generated with the use of the ROS tool rqt_graph.
 
@@ -74,5 +74,4 @@ rosrun gazebo_plugin joint_trajectory_client
 and/or
 rosrun socketcan_bridge socketcan_bridge_node
 rosrun can_comm can_master_node
-
 ```
