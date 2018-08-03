@@ -1,6 +1,8 @@
 # Jaco2-ROS-CAN-pkgs
 Current repository includes the appropriate ROS packages that allow remote communication and control of Kinova Jaco<sup>2</sup> 6 DOF robotic arm via the use of CAN protocol. 
 
+The ROS packages of current repository were developed in order to be used along with the `raspberry_can.project` of [Jaco2-CodeSys-projects](https://github.com/mdiamanti/Jaco2-CodeSys-projects) repository.
+
 ## File System
 - `can_comm` ROS package provides all the functionality required for remote communication of Kinova Jaco<sup>2</sup> Gazebo simulation with any system that supports the use of [socketcan](https://github.com/linux-can/can-utils), an implementation of CAN protocols for Linux.    
 - `gazebo_plugin` ROS package offers a ROS action server so as to control the robotic arm by executing trajectories of type [control_msgs/FollowJointTrajectoryAction](http://docs.ros.org/hydro/api/control_msgs/html/action/FollowJointTrajectory.html). More specifically, the robotic arm that is controlled through this package is Kinova Jaco<sup>2</sup> 6 DOF with three robot fingers, or else the model j2n6s300 as it is named in the required [kinova-ros](https://github.com/Kinovarobotics/kinova-ros#installation) package.
